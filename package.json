@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "npm run format:check",
+    "format:check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@openjck/prettier-config": "^1.0.2",
+    "prettier": "^3.7.4"
+  }
+}

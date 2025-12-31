@@ -1,0 +1,62 @@
+/**
+ * For reasons I really don't understand at the time of this writing, this
+ * prevents extra whitespace from appearing below the these elements.
+ */
+figure,
+pre {
+  display: inline-block;
+}
+
+pre {
+  word-wrap: normal;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+figure {
+  margin: 0;
+  width: 100%;
+}
+
+figure img:only-of-type {
+  display: block;
+  margin: 0 auto;
+}
+
+figcaption {
+  color: rgb(50, 50, 50);
+  font-size: 0.85em;
+  text-align: center;
+}
+
+/**
+ * This warning can be ignored.
+ *
+ * I'm using the same specificity as a built-in WriteFreely rule so that I can
+ * override that rule. I don't think using "body" really meaningfully counts
+ * toward the specificity, but this is how the WriteFreely selector is written,
+ * so for the sake of clarity, I've written it the same way.
+ *
+ * It also seems this editor is confused by the newer :has() syntax.
+ */
+body#post article p:has(img:only-child) {
+  display: inline-block;
+  width: 100%;
+}
+
+/**
+ * This warning can be ignored.
+ *
+ * I'm using the same specificity as a built-in WriteFreely rule so that I can
+ * override that rule. I don't think using "body" really meaningfully counts
+ * toward the specificity, but this is how the WriteFreely selector is written,
+ * so for the sake of clarity, I've written it the same way.
+ */
+body#post article p img:only-child {
+  display: block;
+  margin: 0 auto;
+}
+
+iframe {
+  width: 100%;
+}
