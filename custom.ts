@@ -87,6 +87,7 @@ function redirectThoughts(): void {
   }
 
   const redirects: Record<string, string> = {
+    "1684712901": "/better-than-i-found-it",
     "1707178476": "/road-safety",
   };
 
