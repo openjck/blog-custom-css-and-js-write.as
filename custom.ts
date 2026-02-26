@@ -13,9 +13,9 @@
  * https://usefathom.com/docs/integrations/gohighlevel
  * https://usefathom.com/docs/integrations/shopify
  */
-function setUpUmami() {
-  const script = document.createElement("script");
-  script.setAttribute("defer", true);
+function setUpUmami(): void {
+  const script: HTMLScriptElement = document.createElement("script");
+  script.defer = true;
   script.setAttribute("src", "https://cloud.umami.is/script.js");
   script.setAttribute(
     "data-website-id",
@@ -27,14 +27,28 @@ function setUpUmami() {
 /**
  * Add "Tag: " before the title and content heading on a category page.
  */
-function customizeTagTitle() {
-  if (window.location.pathname.includes("/tag:")) {
-    const title = document.querySelector("title");
-    title.textContent = `Tag: ${title.textContent}`;
-
-    const contentHeading = document.querySelector("#wrapper h1");
-    contentHeading.textContent = `Tag: ${contentHeading.textContent}`;
+function customizeTagTitle(): void {
+  if (!window.location.pathname.includes("/tag:")) {
+    return;
   }
+
+  const title: HTMLTitleElement | null = document.querySelector("title");
+
+  if (title === null) {
+    return;
+  }
+
+  title.textContent = `Tag: ${title.textContent}`;
+
+  const contentHeading: HTMLHeadingElement | null = document.querySelector(
+    "#wrapper h1",
+  );
+
+  if (contentHeading === null) {
+    return;
+  }
+
+  contentHeading.textContent = `Tag: ${contentHeading.textContent}`;
 }
 
 /**
@@ -44,7 +58,7 @@ function customizeTagTitle() {
  * redirected all thoughts posts to their new URLs on WriteFreely, but these get
  * enough traffic to warrant it.
  */
-function redirectThoughts() {
+function redirectThoughts(): void {
   // Don't run this on write.as or any page other than the homepage.
   //
   // If we wanted this to work correctly on write.as, we would need to check for
@@ -63,18 +77,23 @@ function redirectThoughts() {
   }
 
   // This is safe because window.location.hash is _always_ set. When there is no
-  // hash, window.location.hash is the empty string. Additionally, the substring
-  // of the empty string always the empty string, and we check for the empty
-  // string right after this.
-  const thoughtsId = window.location.hash.substring(1);
+  // fragment, window.location.hash is the empty string. Additionally, the
+  // substring of the empty string always the empty string, and we check for the
+  // empty string right after this.
+  const fragmentText = window.location.hash.substring(1);
 
-  if (thoughtsId === "") {
+  if (fragmentText === "") {
     return;
   }
 
-  switch (thoughtsId) {
-    case "1707178476":
-      window.location.href = "/road-safety";
+  const redirects: Record<string, string> = {
+    "1707178476": "/road-safety",
+  };
+
+  const destination: string | undefined = redirects[fragmentText];
+
+  if (destination !== undefined) {
+    window.location.href = destination;
   }
 }
 
