@@ -55,7 +55,10 @@ function redirectThoughts() {
   // If the user is on a page other than the homepage, then they must not be
   // trying to access a thoughts post, since those were always at the root URL
   // (/), with fragments used for direct links to specific posts.
-  if (window.location !== "https://blog.johnkarahalis.com/") {
+  if (
+    window.location.hostname !== "blog.johnkarahalis.com" ||
+    window.location.pathname !== "/"
+  ) {
     return;
   }
 

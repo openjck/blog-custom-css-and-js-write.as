@@ -1,0 +1,31 @@
+{
+  // Configure the TypeScript compiler.
+  "compilerOptions": {
+    // Allow new JavaScript features and DOM-related globals.
+    "lib": ["esnext", "deno.ns", "dom", "dom.iterable"]
+  },
+  // Exclude these directories from everything, including formatting, linting,
+  // and more.
+  "exclude": [
+    "dist/"
+  ],
+  "lint": {
+    "rules": {
+      "exclude": [
+        "no-window"
+      ]
+    }
+  },
+  "tasks": {
+    "build": "deno task 'build-*'",
+    "build-ts": "deno bundle --minify --platform browser --outdir dist custom.ts",
+    "build-css": "deno run --allow-read --allow-write --allow-env --allow-run npm:esbuild custom.css --minify --outdir=dist",
+    "format": "deno fmt",
+    "lint": "deno task 'lint-*'",
+    "lint-builtin": "deno lint",
+    "lint-check": "deno check",
+    "lint-format": "deno fmt --check",
+    "format-test-and-build": "deno task format && deno task lint && deno task build",
+    "ftb": "deno task format-test-and-build"
+  }
+}
