@@ -29,29 +29,11 @@ figcaption {
   text-align: center;
 }
 
-/**
- * This warning can be ignored.
- *
- * I'm using the same specificity as a built-in WriteFreely rule so that I can
- * override that rule. I don't think using "body" really meaningfully counts
- * toward the specificity, but this is how the WriteFreely selector is written,
- * so for the sake of clarity, I've written it the same way.
- *
- * It also seems this editor is confused by the newer :has() syntax.
- */
 body#post article p:has(img:only-child) {
   display: inline-block;
   width: 100%;
 }
 
-/**
- * This warning can be ignored.
- *
- * I'm using the same specificity as a built-in WriteFreely rule so that I can
- * override that rule. I don't think using "body" really meaningfully counts
- * toward the specificity, but this is how the WriteFreely selector is written,
- * so for the sake of clarity, I've written it the same way.
- */
 body#post article p img:only-child {
   display: block;
   margin: 0 auto;
