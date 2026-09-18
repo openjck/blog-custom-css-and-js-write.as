@@ -60,3 +60,7 @@ body#post article p img:only-child {
 iframe {
   width: 100%;
 }
+
+figcaption p {
+  display: block;
+}
