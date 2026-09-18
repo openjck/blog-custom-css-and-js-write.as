@@ -61,6 +61,6 @@ iframe {
   width: 100%;
 }
 
-figcaption p {
+body#post article figcaption p {
   display: block;
 }
